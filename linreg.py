@@ -6,11 +6,22 @@ import numpy as np
 
 class LinReg:
     def __init__(self, x: np.ndarray, y: np.ndarray) -> None:
-        self.x = sm.add_constant(x)
+        self.x = x
         self.y = y
+        self.model = None
+        self.results = None
+        self.a = None
+        self.b = None
+
+        self.setup()
+        
+
+    def setup(self) -> None:
+        self.x = sm.add_constant(self.x)
         self.model = sm.OLS(self.y, self.x)
         self.results = self.model.fit()
         self.a, self.b = self.get_a_b()
+
 
 
     def get_a_b(self) -> Tuple[ufloat]:
