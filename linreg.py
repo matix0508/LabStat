@@ -17,8 +17,8 @@ class LinReg:
         
 
     def setup(self) -> None:
-        self.x = sm.add_constant(self.x)
-        self.model = sm.OLS(self.y, self.x)
+        self.y = sm.add_constant(self.y)
+        self.model = sm.OLS(self.x, self.y)
         self.results = self.model.fit()
         self.a, self.b = self.get_a_b()
 
