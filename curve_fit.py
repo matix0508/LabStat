@@ -22,7 +22,10 @@ class CurveFit:
     def find_curve(self):
         self.popt, self.pcov = curve_fit(self.func, self.x, self.y)
         for i, parameter in enumerate(self.parameters):
-            self.output[parameter] = ufloat(self.popt[i], self.pcov[i])
+            try:
+                self.output[parameter] = ufloat(self.popt[i], self.pcov[i])
+            except IndexError:
+                raise IndexError('Wrong number of parameters')
         
     def plot(self):
         xdata = np.linspace(self.x.min(), self.x.max(), 100)
