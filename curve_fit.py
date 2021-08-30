@@ -30,11 +30,4 @@ class CurveFit:
         plt.plot(xdata, self.func(xdata, self.output['a'].nominal_value))
         plt.show()
 
-xdata = np.array([1, 2, 3, 4, 5, 6])
-ydata = inverse_square(xdata, 3)
-
-cd = CurveFit(xdata, ydata, inverse_square, ['a'])
-cd.find_curve()
-cd.plot()
-
 # popt, pcov = curve_fit(inverse_square, xdata, ydata)
